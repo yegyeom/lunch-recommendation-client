@@ -1,4 +1,4 @@
-.header-layout {
+header {
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
@@ -15,12 +15,37 @@
   font-weight: bold;
 }
 
-.header-navi {
-  color: black;
+nav * {
   text-decoration: none;
   padding: 0px 12px;
 }
 
-.header-navi:hover {
-  color: gray;
+#top {
+  font-size: 16px;
+  font-weight: lighter;
+  text-align: right;
+}
+
+#top a {
+  color: #888888;
+}
+
+#top a:hover {
+  font-weight: bold;
+}
+
+#down {
+  color: black;
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+#down a {
+  color: black;
+  transition: color 0.3s;
+}
+
+#down a:hover {
+  color: #888888;
+  transition: color 0.3s;
 }
