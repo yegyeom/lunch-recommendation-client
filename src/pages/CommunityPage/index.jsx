@@ -1,5 +1,13 @@
+import PostList from "./PostList";
+
 function CommunityPage() {
-  return <h1>커뮤니티</h1>;
+  return (
+    <>
+      <div className="community">
+        <PostList></PostList>
+      </div>
+    </>
+  );
 }
 
 export default CommunityPage;
