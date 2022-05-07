@@ -1,40 +1,38 @@
 import { useState, useEffect } from "react";
 
-function Category() {
-  const [category, setCategory] = useState("all");
+function Category(props) {
+  const [category, setCategory] = useState("전체");
 
   useEffect(() => {
+    setCategory("전체");
+
     const allTitle = document.getElementsByClassName("category");
     for (let i of allTitle) i.style = "color: #888888";
 
-    const element = document.getElementById("all");
+    const element = document.getElementById("전체");
     element.style = "color: #E8DE8A";
   }, []);
 
-  const categoryItems = [
-    { title: "전체", id: "all" },
-    { title: "질문", id: "question" },
-    { title: "추천", id: "recommendation" },
-    { title: "자유", id: "free" },
-  ];
+  useEffect(() => {
+    props.getCategory(category);
+  }, [category]);
 
-  const handleCategoryClick = (id) => {
+  const handleCategoryClick = (title) => {
     return () => {
-      setCategory(id);
+      setCategory(title);
 
       const allTitle = document.getElementsByClassName("category");
       for (let i of allTitle) i.style = "color: #888888";
 
-      const element = document.getElementById(id);
+      const element = document.getElementById(title);
       element.style = "color: #E8DE8A";
-      console.log(id);
     };
   };
 
-  const categoryList = categoryItems.map((item, idx) => (
+  const categoryList = props.categoryItems.map((item, idx) => (
     <div
-      id={item.id}
-      onClick={handleCategoryClick(item.id)}
+      id={item.title}
+      onClick={handleCategoryClick(item.title)}
       key={idx}
       className="category"
     >
