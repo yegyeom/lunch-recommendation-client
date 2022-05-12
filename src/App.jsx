@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <DefaultLayout>
         <Routes>
-          <Route path="/" element={<MainPage />} exact />
+          <Route path="/" element={<MenuPage />} exact />
           <Route path="/notice" element={<NoticePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />

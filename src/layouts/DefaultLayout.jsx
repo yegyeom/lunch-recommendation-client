@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import header_logo from "../assets/logo_3.png";
 
 function DefaultLayout({ children }) {
   const [menu, setMenu] = useState(false);
@@ -9,8 +10,8 @@ function DefaultLayout({ children }) {
     { path: "/login", title: "로그인" },
     { path: "/signup", title: "회원가입" },
   ];
+
   const downNavItems = [
-    { path: "/preference", title: "선호도 조사" },
     { path: "/menu", title: "오늘의 메뉴" },
     { path: "/restaurant", title: "주변식당 추천" },
     { path: "/community", title: "커뮤니티" },
@@ -43,7 +44,7 @@ function DefaultLayout({ children }) {
     <div className="container">
       <header>
         <div className="header-menu">
-          <div id="logo">점심메뉴추천(logo)</div>
+          <img className="header-logo" alt="header_logo" src={header_logo} />
           <nav>
             <div id="top">{topNavList}</div>
             <div id="down">{downNavList}</div>
