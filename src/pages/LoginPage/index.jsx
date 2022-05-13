@@ -1,10 +1,30 @@
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [warningText, setWarningText] = useState(false);
 
   const handleSingupClick = (e) => {
     navigate("/signup");
+  };
+
+  const handleIdChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLoginClick = () => {
+    if (username.length <= 0 && password.length <= 0)
+      setWarningText("아이디와 비밀번호를 모두 입력하세요!");
+    else if (password.length === 0) setWarningText("비밀번호를 입력하세요!");
+    else if (username.length === 0) setWarningText("아이디를 입력하세요!");
+    else setWarningText(false);
   };
 
   return (
@@ -27,11 +47,20 @@ const LoginPage = () => {
           </div>
           <div className="login-box">
             <div>
-              <input type="text" placeholder="아이디" />
-              <input type="password" placeholder="비밀번호" />
+              <input
+                onChange={handleIdChange}
+                type="text"
+                placeholder="아이디"
+              />
+              <input
+                onChange={handlePasswordChange}
+                type="password"
+                placeholder="비밀번호"
+              />
             </div>
-            <button>로그인</button>
+            <button onClick={handleLoginClick}>로그인</button>
           </div>
+          {warningText && <div className="warning-text">{warningText}</div>}
         </div>
       </div>
       <div className="right-outer">
@@ -55,6 +84,6 @@ const LoginPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
