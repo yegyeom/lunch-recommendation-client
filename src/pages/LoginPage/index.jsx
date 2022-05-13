@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-function LoginPage() {
+const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleSingupClick = (e) => {

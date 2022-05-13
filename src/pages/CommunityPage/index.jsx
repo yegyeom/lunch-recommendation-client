@@ -1,6 +1,6 @@
 import PostList from "./PostList";
 
-function CommunityPage() {
+const CommunityPage = () => {
   return (
     <>
       <div className="community">
@@ -8,6 +8,6 @@ function CommunityPage() {
       </div>
     </>
   );
-}
+};
 
 export default CommunityPage;

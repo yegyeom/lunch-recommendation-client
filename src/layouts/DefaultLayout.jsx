@@ -23,7 +23,11 @@ function DefaultLayout({ children }) {
       to={item.path}
       key={idx}
       style={({ isActive }) => (isActive ? { fontWeight: "bold" } : {})}
-      onClick={() => setMenu(false)}
+      onClick={
+        item.title === "회원가입" || item.title === "공지사항"
+          ? () => setMenu(true)
+          : () => setMenu(false)
+      }
     >
       {item.title}
     </NavLink>
