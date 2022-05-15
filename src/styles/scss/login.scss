@@ -14,7 +14,7 @@
 .left-inner {
   margin: 8px 0px 8px 8px;
   padding: 100px;
-  height: 350px;
+  height: calc(100% - 370px);
   border: solid 3px #e6c230;
   border-right: none;
 }
@@ -74,7 +74,7 @@
 .right-inner {
   margin: 8px 8px 8px 0px;
   padding: 100px;
-  height: 350px;
+  height: calc(100% - 370px);
   border: solid 3px white;
   border-left: none;
 }
