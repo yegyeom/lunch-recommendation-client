@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import PreferencePage from "./pages/SignupPage/PreferencePage";
 import MenuPage from "./pages/MenuPage";
-import RestaurantPage from "./pages/RestaurantPage";
+import MyMenuPage from "./pages/MyMenuPage";
 import CommunityPage from "./pages/CommunityPage";
 import GuidePage from "./pages/GuidePage";
 
@@ -21,7 +21,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/preference" element={<PreferencePage />} />
           <Route path="/menu" element={<MenuPage />} />
-          <Route path="/restaurant" element={<RestaurantPage />} />
+          <Route path="/mymenu" element={<MyMenuPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/guide" element={<GuidePage />} />
         </Routes>

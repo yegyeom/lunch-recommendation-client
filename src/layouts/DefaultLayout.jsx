@@ -13,7 +13,7 @@ function DefaultLayout({ children }) {
 
   const downNavItems = [
     { path: "/menu", title: "오늘의 메뉴" },
-    { path: "/restaurant", title: "주변식당 추천" },
+    { path: "/mymenu", title: "나의 메뉴" },
     { path: "/community", title: "커뮤니티" },
     { path: "/guide", title: "이용가이드" },
   ];
@@ -37,7 +37,7 @@ function DefaultLayout({ children }) {
     <NavLink
       to={item.path}
       key={idx}
-      style={({ isActive }) => (isActive ? { color: "#E8DE8A" } : {})}
+      style={({ isActive }) => (isActive ? { color: "#E5DB7E" } : {})}
       onClick={() => setMenu(true)}
     >
       {item.title}
