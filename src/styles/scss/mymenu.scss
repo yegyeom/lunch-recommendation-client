@@ -1,0 +1,49 @@
+.user-text-container {
+  position: sticky;
+  width: 300px;
+  height: 200px;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.my-menu-container {
+  height: 100%;
+  display: block;
+  width: 650px;
+  margin-top: 30px;
+}
+
+.history-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  width: 600px;
+  border: solid 1px #888888;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.history-item div {
+  color: #545454;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.history-item span {
+  font-weight: bold;
+  text-decoration: underline 2px;
+  text-underline-position: under;
+}
+
+.history-item span:hover {
+  color: #e5db7e;
+  font-weight: bold;
+  text-decoration: underline 2px;
+  text-underline-position: under;
+  cursor: pointer;
+}
+
+.history-img {
+  width: 600px;
+  height: 400px;
+}
