@@ -10,7 +10,7 @@ function Category(props) {
     for (let i of allTitle) i.style = "color: #888888";
 
     const element = document.getElementById("전체");
-    element.style = "color: #E8DE8A";
+    element.style = "color: #E5DB7E";
   }, []);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Category(props) {
       setCategory(title);
 
       const allTitle = document.getElementsByClassName("category");
-      for (let i of allTitle) i.style = "color: #888888";
+      for (let i of allTitle) i.style = "color: #888888;";
 
       const element = document.getElementById(title);
       element.style = "color: #E8DE8A";

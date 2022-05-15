@@ -22,7 +22,7 @@ body {
 }
 
 .content-container {
-  height: 100%;
+  overflow: hidden;
 }
 
 header {
@@ -125,6 +125,10 @@ nav * {
 }
 
 .left-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 8px 0px 8px 8px;
   padding: 100px;
   height: calc(100% - 370px);
@@ -185,6 +189,10 @@ nav * {
 }
 
 .right-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 8px 8px 8px 0px;
   padding: 100px;
   height: calc(100% - 370px);
@@ -288,6 +296,7 @@ nav * {
   display: flex;
   width: 1400px;
   margin: 0px auto;
+  justify-content: center;
 }
 
 .menu-recommend-container {

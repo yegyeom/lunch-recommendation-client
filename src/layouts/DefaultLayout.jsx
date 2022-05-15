@@ -37,7 +37,7 @@ function DefaultLayout({ children }) {
     <NavLink
       to={item.path}
       key={idx}
-      style={({ isActive }) => (isActive ? { color: "#E8DE8A" } : {})}
+      style={({ isActive }) => (isActive ? { color: "#E5DB7E" } : {})}
       onClick={() => setMenu(true)}
     >
       {item.title}
