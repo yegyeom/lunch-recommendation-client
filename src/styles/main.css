@@ -1,5 +1,15 @@
-html body {
+html {
+  margin: 0px;
+  height: 100%;
+}
+
+body {
   margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
   height: 100%;
 }
 
@@ -21,7 +31,8 @@ header {
   display: flex;
   align-items: flex-end;
   width: 100%;
-  height: 150px;
+  height: 145px;
+  background-color: white;
 }
 
 .header-menu {
@@ -42,6 +53,7 @@ nav * {
   font-size: 16px;
   font-weight: lighter;
   text-align: right;
+  margin-top: 15px;
 }
 
 #top a {
@@ -112,7 +124,7 @@ nav * {
 .left-inner {
   margin: 8px 0px 8px 8px;
   padding: 100px;
-  height: 350px;
+  height: calc(100% - 370px);
   border: solid 3px #e6c230;
   border-right: none;
 }
@@ -172,7 +184,7 @@ nav * {
 .right-inner {
   margin: 8px 8px 8px 0px;
   padding: 100px;
-  height: 350px;
+  height: calc(100% - 370px);
   border: solid 3px white;
   border-left: none;
 }
@@ -256,6 +268,76 @@ nav * {
 .empty-text {
   height: 16px;
   margin-bottom: 10px;
+}
+
+.preference-text > div:first-child {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.preference-text > div {
+  font-size: 16px;
+}
+
+.menu-container {
+  display: flex;
+  width: 1400px;
+  height: 100%;
+  margin: 0px auto;
+  border: 1px solid red;
+}
+
+.menu-recommend-container {
+  height: 100%;
+  display: block;
+  width: 1100px;
+  border: 1px solid blue;
+}
+
+.main-img {
+  width: 800px;
+}
+
+.menu-list-container {
+  border: 1px solid purple;
+  overflow-y: scroll;
+}
+
+.real-time-container {
+  position: sticky;
+  width: 220px;
+  height: 500px;
+  text-align: left;
+  margin: 0px auto;
+}
+
+.real-time-container > h3 {
+  margin-bottom: 0px;
+}
+
+.real-time-container > span {
+  font-size: 12px;
+}
+
+.real-time-box {
+  width: 200px;
+  height: 400px;
+  background-color: #e8de8a;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.real-time-menu {
+  margin: 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.real-time-menu:hover {
+  text-decoration: underline 2.5px;
+  text-underline-position: under;
 }
 
 /*# sourceMappingURL=main.css.map */
