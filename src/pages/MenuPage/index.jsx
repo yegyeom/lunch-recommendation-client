@@ -1,3 +1,5 @@
+import React from "react";
+
 import RealTimeMenu from "./RealTimeMenu";
 import main_img from "../../assets/main_img.png";
 import MenuList from "./MenuList";
