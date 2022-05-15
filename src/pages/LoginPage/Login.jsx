@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API from '../../api';
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -13,12 +14,17 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLoginClick = () => {
+  const handleLoginClick = async (e) => {
     if (username.length <= 0 && password.length <= 0)
       setWarningText("아이디와 비밀번호를 모두 입력하세요.");
     else if (password.length === 0) setWarningText("비밀번호를 입력하세요.");
     else if (username.length === 0) setWarningText("아이디를 입력하세요.");
-    else setWarningText(false);
+    else {
+      setWarningText(false);
+      const data = await API.auth.login({username, password});
+      console.log(data);
+    }
+
   };
 
   return (
