@@ -1,5 +1,5 @@
 import React from "react";
-import tmp from "../../assets/tmp.jpg";
+import tmp from "../../assets/temp.jpeg";
 
 const MenuHistory = () => {
   const historyItems = [
