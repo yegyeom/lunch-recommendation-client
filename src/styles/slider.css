@@ -1,0 +1,7 @@
+.swiper-button-next {
+    color: black;
+}
+
+.swiper-pagination {
+ --swiper-theme-color: #e6c230;
+}
