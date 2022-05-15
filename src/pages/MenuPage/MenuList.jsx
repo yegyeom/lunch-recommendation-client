@@ -45,11 +45,11 @@ const menuItems = [
   },
 ];
 
-const MenuList = () => {
+const MenuList = ({onClickMenu}) => {
   return (
     <div className="menu-list-container">
       {menuItems.map((item) => (
-        <MenuSwiper menu={item} />
+        <MenuSwiper menu={item} onClickSlide={onClickMenu} />
       ))}
     </div>
   );

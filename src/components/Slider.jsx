@@ -6,12 +6,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../styles/slider.css"
 
-const Slider = ({ items }) => {
-  const slides = items.map(({ id, src, name }) => (
-    <SwiperSlide key={id}>
+const Slider = ({ items, onClickSlide }) => {
+  const slides = items.map((item) => (
+    <SwiperSlide key={item.id} onClick={() => onClickSlide(item)}>
       <div className="slide">
-        <img className="slide-image" src={src} alt="음식 이미지"></img>
-        <span>{name}</span>
+        <img className="slide-image" src={item.src} alt="음식 이미지"></img>
+        <span>{item.name}</span>
       </div>
     </SwiperSlide>
   ));

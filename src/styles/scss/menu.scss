@@ -19,8 +19,7 @@
 
 .real-time-container {
   position: fixed;
-  width: 220px;
-  height: 500px;
+  width: 240px;
   top: 154px;
   right: 64px;
   text-align: left;
@@ -37,8 +36,6 @@
 }
 
 .real-time-box {
-  width: 200px;
-  height: 400px;
   border-radius: 24px;
   background-color: #e8de8a;
   margin-top: 20px;
@@ -54,4 +51,21 @@
 .real-time-menu:hover {
   text-decoration: underline 2.5px;
   text-underline-position: under;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.modal-image {
+  width: 360px;
+  border-radius: 24px;
+}
+
+.menu-name {
+  font-weight: 700;
 }
