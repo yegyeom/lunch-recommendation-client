@@ -12,7 +12,7 @@ function DefaultLayout({ children }) {
   ];
 
   const downNavItems = [
-    { path: "/menu", title: "오늘의 메뉴" },
+    { path: "/", title: "오늘의 메뉴" },
     { path: "/mymenu", title: "나의 메뉴" },
     { path: "/community", title: "커뮤니티" },
     { path: "/guide", title: "이용가이드" },

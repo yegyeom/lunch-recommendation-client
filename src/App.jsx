@@ -13,12 +13,11 @@ import NewPostPage from "./pages/CommunityPage/NewPostPage";
 import API from "./api";
 
 function App() {
-
-  (async function() {
+  (async function () {
     const data = await API.auth.user();
-    console.log(data)
+    console.log(data);
   })();
-  
+
   return (
     <BrowserRouter>
       <DefaultLayout>
@@ -28,7 +27,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/preference" element={<PreferencePage />} />
-          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/" element={<MenuPage />} />
           <Route path="/mymenu" element={<MyMenuPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/post" element={<NewPostPage />} />
