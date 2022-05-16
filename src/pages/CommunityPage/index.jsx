@@ -4,7 +4,7 @@ const CommunityPage = () => {
   return (
     <>
       <div className="community">
-        <PostList></PostList>
+        <PostList />
       </div>
     </>
   );
