@@ -1,3 +1,4 @@
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/main.css";
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -10,30 +11,27 @@ import MyMenuPage from "./pages/MyMenuPage";
 import CommunityPage from "./pages/CommunityPage";
 import GuidePage from "./pages/GuidePage";
 import NewPostPage from "./pages/CommunityPage/NewPostPage";
-import API from "./api";
+import AuthContextProvider from "./contexts/AuthContextProvider";
 
 function App() {
-  (async function () {
-    const data = await API.auth.user();
-    console.log(data);
-  })();
-
   return (
     <BrowserRouter>
-      <DefaultLayout>
-        <Routes>
-          <Route path="/" element={<MenuPage />} exact />
-          <Route path="/notice" element={<NoticePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/preference" element={<PreferencePage />} />
-          <Route path="/" element={<MenuPage />} />
-          <Route path="/mymenu" element={<MyMenuPage />} />
-          <Route path="/community" element={<CommunityPage />} />
-          <Route path="/post" element={<NewPostPage />} />
-          <Route path="/guide" element={<GuidePage />} />
-        </Routes>
-      </DefaultLayout>
+      <AuthContextProvider>
+        <DefaultLayout>
+          <Routes>
+            <Route path="/" element={<MenuPage />} exact />
+            <Route path="/notice" element={<NoticePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/preference" element={<PreferencePage />} />
+            <Route path="/" element={<MenuPage />} />
+            <Route path="/mymenu" element={<MyMenuPage />} />
+            <Route path="/community" element={<CommunityPage />} />
+            <Route path="/post" element={<NewPostPage />} />
+            <Route path="/guide" element={<GuidePage />} />
+          </Routes>
+        </DefaultLayout>
+      </AuthContextProvider>
     </BrowserRouter>
   );
 }

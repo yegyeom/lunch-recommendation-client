@@ -1,54 +1,81 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import header_logo from "../assets/logo_3.png";
+import API from "../api";
+import { deleteAuthorizationHeader } from "../api/axios";
+import { AuthContext } from "../contexts/AuthContextProvider";
+import { AUTH_KEY } from "../api/axios";
+
+const topNavItems = [
+  { path: "/notice", title: "공지사항" },
+  { path: "/login", title: "로그인", auth: true },
+  { path: "/signup", title: "회원가입", auth: true },
+];
+
+const downNavItems = [
+  { path: "/", title: "오늘의 메뉴" },
+  { path: "/mymenu", title: "나의 메뉴" },
+  { path: "/community", title: "커뮤니티" },
+  { path: "/guide", title: "이용가이드" },
+];
 
 function DefaultLayout({ children }) {
-  const [menu, setMenu] = useState(false);
+  const { isLogin, setIsLogin, user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleImgClick = () => {
     navigate("/");
   };
 
-  const topNavItems = [
-    { path: "/notice", title: "공지사항" },
-    { path: "/login", title: "로그인" },
-    { path: "/signup", title: "회원가입" },
-  ];
+  const handleLogoutButtonClick = () => {
+    sessionStorage.removeItem(AUTH_KEY);
+    setIsLogin(false);
+    setUser(null);
+    deleteAuthorizationHeader();
+  };
 
-  const downNavItems = [
-    { path: "/", title: "오늘의 메뉴" },
-    { path: "/mymenu", title: "나의 메뉴" },
-    { path: "/community", title: "커뮤니티" },
-    { path: "/guide", title: "이용가이드" },
-  ];
-
-  const topNavList = topNavItems.map((item, idx) => (
-    <NavLink
-      to={item.path}
-      key={idx}
-      style={({ isActive }) => (isActive ? { fontWeight: "bold" } : {})}
-      onClick={
-        item.title === "회원가입" || item.title === "공지사항"
-          ? () => setMenu(true)
-          : () => setMenu(false)
+  useEffect(() => {
+    (async function () {
+      const data = await API.auth.user();
+      if (data) {
+        setUser(data);
+        setIsLogin(true);
       }
-    >
-      {item.title}
-    </NavLink>
-  ));
+    })();
+  }, [isLogin, setUser, setIsLogin]);
+
+  const topNavList = topNavItems.map(
+    (item, idx) =>
+      (!item.auth || !isLogin) && (
+        <NavLink
+          to={item.path}
+          key={idx}
+          style={({ isActive }) => (isActive ? { fontWeight: "bold" } : {})}
+        >
+          {item.title}
+        </NavLink>
+      )
+  );
 
   const downNavList = downNavItems.map((item, idx) => (
     <NavLink
       to={item.path}
       key={idx}
       style={({ isActive }) => (isActive ? { color: "#E5DB7E" } : {})}
-      onClick={() => setMenu(true)}
     >
       {item.title}
     </NavLink>
   ));
+
+  user &&
+    topNavList.unshift(
+      <span>{`${user.profile.nickname}님, 안녕하세요!`}</span>
+    );
+  isLogin &&
+    topNavList.push(
+      <button onClick={handleLogoutButtonClick}>로그아웃</button>
+    );
 
   return (
     <div className="container">
@@ -66,7 +93,6 @@ function DefaultLayout({ children }) {
           </nav>
         </div>
       </header>
-      {menu ? <hr /> : <></>}
       <div className="content-container">{children}</div>
     </div>
   );

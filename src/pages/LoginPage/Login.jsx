@@ -1,10 +1,14 @@
-import { useState } from "react";
-import API from '../../api';
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import API from "../../api";
+import { AuthContext } from "../../contexts/AuthContextProvider";
 
 const Login = () => {
+  const { setIsLogin } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [warningText, setWarningText] = useState(false);
+  const navigate = useNavigate();
 
   const handleIdChange = (e) => {
     setUsername(e.target.value);
@@ -21,10 +25,12 @@ const Login = () => {
     else if (username.length === 0) setWarningText("아이디를 입력하세요.");
     else {
       setWarningText(false);
-      const data = await API.auth.login({username, password});
-      console.log(data);
+      const data = await API.auth.login({ username, password });
+      if (data) {
+        setIsLogin(true);
+        navigate("/");
+      }
     }
-
   };
 
   return (
