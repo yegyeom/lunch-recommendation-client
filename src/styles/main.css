@@ -85,6 +85,7 @@ nav * {
 
 .header-logo {
   height: 90px;
+  cursor: pointer;
 }
 
 .community {

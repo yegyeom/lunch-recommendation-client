@@ -1,9 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import header_logo from "../assets/logo_3.png";
 
 function DefaultLayout({ children }) {
   const [menu, setMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const handleImgClick = () => {
+    navigate("/");
+  };
 
   const topNavItems = [
     { path: "/notice", title: "공지사항" },
@@ -48,7 +54,12 @@ function DefaultLayout({ children }) {
     <div className="container">
       <header>
         <div className="header-menu">
-          <img className="header-logo" alt="header_logo" src={header_logo} />
+          <img
+            className="header-logo"
+            alt="header_logo"
+            src={header_logo}
+            onClick={handleImgClick}
+          />
           <nav>
             <div id="top">{topNavList}</div>
             <div id="down">{downNavList}</div>
