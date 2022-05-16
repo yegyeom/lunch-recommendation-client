@@ -1,7 +1,18 @@
 import React from "react";
-import tmp from "../../assets/tmp.jpg";
+import tmp from "../../assets/temp.jpeg";
+import { useState } from "react";
+import Modal from "../../components/Modal";
 
 const MenuHistory = () => {
+  const [selectedMenu, setSelectedMenu] = useState();
+  const [modalActive, setModalActive] = useState(false);
+
+  const handleMenuClick = (menu) => {
+    console.log(menu)
+    setSelectedMenu(menu);
+    setModalActive(true);
+  }
+
   const historyItems = [
     {
       title: "파스타",
@@ -27,16 +38,37 @@ const MenuHistory = () => {
   ];
 
   const historyList = historyItems.map((item, idx) => (
-    <div className="history-item" key={idx}>
-      <img className="history-img" alt="menu_img" src={item.src} />
-      <div>
-        {item.year}년 {item.month}월 {item.day}일에 드신&nbsp;
-        <span>{item.title}</span>&nbsp;어때요?
+    <>
+      <div className="history-item" key={idx}>
+        <img className="history-img" alt="menu_img" src={item.src} />
+        <div>
+          {item.year}년 {item.month}월 {item.day}일에 드신&nbsp;
+          <span onClick={() => handleMenuClick(item)} value="testValue">{item.title}</span>&nbsp;어때요?
+        </div>
       </div>
-    </div>
+      {selectedMenu && (
+        <Modal
+          title={selectedMenu.title}
+          active={modalActive}
+          setActive={setModalActive}
+        >
+          <div className="modal-content">
+            <img
+              className="modal-image"
+              src={selectedMenu.src}
+              alt="음식 이미지"
+            ></img>
+            <p>
+              <span className="menu-name">{selectedMenu.title}</span>
+              <span>을(를) 오늘의 메뉴로 선정하시겠습니까?</span>
+            </p>
+          </div>
+        </Modal>
+      )}
+    </>
   ));
 
-  return <div className="my-menu-container">{historyList}</div>;
+  return <div className="my-history-container">{historyList}</div>;
 };
 
 export default MenuHistory;
