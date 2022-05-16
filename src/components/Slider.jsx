@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
@@ -8,7 +8,7 @@ import "../styles/slider.css"
 
 const Slider = ({ items, onClickSlide }) => {
   const slides = items.map((item) => (
-    <SwiperSlide key={item.id} onClick={() => onClickSlide(item)}>
+    <SwiperSlide  key={item.id} onClick={() => onClickSlide(item)}>
       <div className="slide">
         <img className="slide-image" src={item.src} alt="음식 이미지"></img>
         <span>{item.name}</span>
@@ -23,7 +23,6 @@ const Slider = ({ items, onClickSlide }) => {
         spaceBetween={30}
         slidesPerGroup={3}
         loop={true}
-        loopFillGroupWithBlank={true}
         pagination={{
           clickable: true,
         }}

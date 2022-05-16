@@ -6,6 +6,9 @@ const auth = {
     },
     login: async (params) => {
         return await doFetch('POST', '/auth/token', { params })
+    },
+    user: async (params) => {
+        return await doFetch('GET', '/account/user')
     }
 }
 

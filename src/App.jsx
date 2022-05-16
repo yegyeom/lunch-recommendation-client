@@ -9,8 +9,15 @@ import MenuPage from "./pages/MenuPage";
 import MyMenuPage from "./pages/MyMenuPage";
 import CommunityPage from "./pages/CommunityPage";
 import GuidePage from "./pages/GuidePage";
+import API from "./api";
 
 function App() {
+
+  (async function() {
+    const data = await API.auth.user();
+    console.log(data)
+  })();
+  
   return (
     <BrowserRouter>
       <DefaultLayout>

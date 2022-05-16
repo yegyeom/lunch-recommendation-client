@@ -10,7 +10,7 @@ export const doFetch = async (method, url, config) => {
     const axiosConfig = {
         method,
         url: "/api" + url,
-        headers: config.headers,
+        headers: config?.headers,
         timeout: 30000,
     };
 
@@ -23,7 +23,7 @@ export const doFetch = async (method, url, config) => {
         if (sessionToken) {
             const token = `Token ${sessionToken}`;
             if (axiosConfig.headers) axiosConfig.headers.authorization = token;
-            else config.headers = { authorization: token };
+            else axiosConfig.headers = { authorization: token };
         }
     }
 
