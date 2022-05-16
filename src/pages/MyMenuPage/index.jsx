@@ -6,11 +6,12 @@ const MyMenuPage = () => {
   const [nickname, setNickname] = useState("동작구고독한미식가");
 
   return (
-    <div className="menu-container">
+    <div className="my-menu-container">
       <div className="user-text-container">
         <h2>
-          {nickname}님이
-          <br />
+          <span className="user-nickname">{nickname}</span>님이
+        </h2>
+        <h2>
           선택하셨던 메뉴에요!
         </h2>
       </div>

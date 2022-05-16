@@ -1,16 +1,38 @@
+.my-menu-container{
+  display: flex;
+  width: 1400px;
+  margin: 0px auto;
+  justify-content: right;
+}
+
 .user-text-container {
-  position: sticky;
+  position: fixed;
   width: 300px;
   height: 200px;
+  top: 154px;
+  left: 320px;
   text-align: left;
   margin-top: 10px;
 }
 
-.my-menu-container {
+.user-text-container > h2:first-child{
+  margin-bottom: 10px;
+}
+
+.user-text-container > h2:last-child{
+  margin-top: 0px;
+}
+
+.user-nickname{
+  text-decoration: underline 2px;
+  text-underline-position: under;
+}
+.my-history-container {
   height: 100%;
   display: block;
   width: 650px;
   margin-top: 30px;
+  margin-right: 200px;
 }
 
 .history-item {
