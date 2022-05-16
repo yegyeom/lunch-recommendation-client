@@ -57,7 +57,11 @@ const Login = () => {
             로그인
           </button>
         </div>
-        {warningText && <div className="warning-text">{warningText}</div>}
+        {warningText ? (
+          <div className="warning-text">{warningText}</div>
+        ) : (
+          <div className="empty-text"></div>
+        )}
       </div>
     </div>
   );

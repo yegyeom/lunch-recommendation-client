@@ -225,7 +225,7 @@ nav * {
   align-items: center;
   flex-direction: column;
   margin: 8px 0px 8px 8px;
-  padding: 100px;
+  padding: 85px;
   height: calc(100% - 370px);
   border: solid 3px #e6c230;
   border-right: none;
