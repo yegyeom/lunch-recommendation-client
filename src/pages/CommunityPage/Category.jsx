@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Category(props) {
-  const [category, setCategory] = useState("전체");
+  const navigate = useNavigate();
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
-    setCategory("전체");
+    setCategory(props.categoryItems[0].title);
 
     const allTitle = document.getElementsByClassName("category");
     for (let i of allTitle) i.style = "color: #888888";
 
-    const element = document.getElementById("전체");
+    const element = document.getElementById(props.categoryItems[0].title);
     element.style = "color: #E5DB7E";
   }, []);
 
@@ -29,6 +31,14 @@ function Category(props) {
     };
   };
 
+  const handleNewPostBtnClick = () => {
+    navigate("/post");
+  };
+
+  const handlePostBtnClick = () => {
+    navigate("/community");
+  };
+
   const categoryList = props.categoryItems.map((item, idx) => (
     <div
       id={item.title}
@@ -42,7 +52,18 @@ function Category(props) {
 
   return (
     <div className="community-list-header">
-      <h2 className="community-category">{categoryList}</h2>
+      <div>
+        <h2 className="community-category">{categoryList}</h2>
+        {props.title ? (
+          <button className="new-post-btn" onClick={handleNewPostBtnClick}>
+            글 작성
+          </button>
+        ) : (
+          <button className="new-post-btn" onClick={handlePostBtnClick}>
+            글 등록
+          </button>
+        )}
+      </div>
       <hr />
     </div>
   );

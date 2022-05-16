@@ -88,6 +88,8 @@ nav * {
 }
 
 .community {
+  margin: 0px auto;
+  width: 1000px;
   padding: 0px 80px;
 }
 
@@ -98,7 +100,29 @@ nav * {
 }
 
 .community-list-header {
+  width: 1000px;
   text-align: center;
+}
+
+.community-list-header > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.community-list-header > hr {
+  margin-top: 0px;
+}
+
+.new-post-btn {
+  margin: 5px 45px 5px 5px;
+  background-color: #e8de8a;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0px 20px;
+  cursor: pointer;
 }
 
 .community-category > div {
@@ -107,8 +131,78 @@ nav * {
   cursor: pointer;
 }
 
-.community-list-header > hr {
-  margin: 0px auto;
+.post-list-item {
+  display: flex;
+  align-items: center;
+  width: 1000px;
+  height: 50px;
+  vertical-align: middle;
+  padding: 0px 30px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.post-list-item > div:first-child {
+  display: inline-block;
+  margin: 0px 15px;
+  color: #888888;
+  vertical-align: middle;
+}
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 22px;
+}
+
+.post-detail-info {
+  flex-direction: row;
+  font-size: 15px;
+  color: #888888;
+}
+
+.post-detail-info > span:last-child {
+  font-weight: lighter;
+}
+
+.post-info > span:first-child {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.new-post {
+  text-align: center;
+  border: 1px solid #888888;
+  border-radius: 15px;
+  margin: 0px 10px;
+}
+
+.new-post-title {
+  width: 900px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #888888;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.new-post-title:focus {
+  outline: none;
+}
+
+.new-post-content {
+  width: 900px;
+  height: 360px;
+  border: none;
+  padding: 20px 0px;
+  border-bottom: 1px solid #888888;
+  font-size: 20px;
+  resize: none;
+}
+
+.new-post-content:focus {
+  outline: none;
+  padding: 20px 0px;
 }
 
 .login-container {
