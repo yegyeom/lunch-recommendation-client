@@ -1,0 +1,17 @@
+.guide-swiper {
+  height: 550px;
+}
+
+.guide-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+  height: 100%;
+}
+
+.guide-image {
+  height: 550px;
+  object-fit: fill;
+}
