@@ -42,8 +42,11 @@ function Category(props) {
   const handlePostBtnClick = async () => {
     if (postTitle.length < 2 || postContent.length < 5) return;
     console.log(postTitle, postContent);
+    const selectedCategory =
+      postCategory === "질문" ? 1 : postCategory === "추천" ? 2 : 3;
+
     const data = await API.community.createPost({
-      category: 0,
+      category: selectedCategory,
       title: postTitle,
       content: postContent,
     });
