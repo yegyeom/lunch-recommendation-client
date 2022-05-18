@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/main.css";
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -9,6 +9,7 @@ import PreferencePage from "./pages/SignupPage/PreferencePage";
 import MenuPage from "./pages/MenuPage";
 import MyMenuPage from "./pages/MyMenuPage";
 import CommunityPage from "./pages/CommunityPage";
+import PostViewPage from "./pages/CommunityPage/PostViewPage";
 import GuidePage from "./pages/GuidePage";
 import NewPostPage from "./pages/CommunityPage/NewPostPage";
 import AuthContextProvider from "./contexts/AuthContextProvider";
@@ -24,10 +25,10 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/preference" element={<PreferencePage />} />
-            <Route path="/" element={<MenuPage />} />
             <Route path="/mymenu" element={<MyMenuPage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/post" element={<NewPostPage />} />
+            <Route path="/community/posts" element={<CommunityPage />} />
+            <Route path="/community/new" element={<NewPostPage />} />
+            <Route path="/community/posts/:userId" element={<PostViewPage />} />
             <Route path="/guide" element={<GuidePage />} />
           </Routes>
         </DefaultLayout>
