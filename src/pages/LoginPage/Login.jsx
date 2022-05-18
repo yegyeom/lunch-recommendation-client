@@ -25,11 +25,16 @@ const Login = () => {
     else if (username.length === 0) setWarningText("아이디를 입력하세요.");
     else {
       setWarningText(false);
-      const data = await API.auth.login({ username, password });
-      if (data) {
-        setIsLogin(true);
-        navigate("/");
-      }
+      await API.auth
+        .login({ username, password })
+        .then((res) => {
+          console.log(res);
+          setIsLogin(true);
+          navigate("/");
+        })
+        .catch(() => {
+          setWarningText("입력한 아이디·비밀번호를 다시 확인해주세요.");
+        });
     }
   };
 
