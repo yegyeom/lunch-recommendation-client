@@ -1,7 +1,9 @@
 import auth from './auth';
+import community from './community';
 
 const API = {
-    auth
+    auth,
+    community
 };
 
 export default API;
