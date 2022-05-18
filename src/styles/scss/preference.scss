@@ -8,3 +8,37 @@
 .preference-text > div {
   font-size: 16px;
 }
+
+.survey {
+  margin-top: 30px;
+  height: 100%;
+}
+
+.preference-item {
+  width: fit-content;
+  display: table;
+  padding: 5px 10px;
+  border-radius: 50px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.preference-item > span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 20px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.preference-items {
+  display: flex;
+  justify-content: center;
+}
+
+.food-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  image-rendering: -webkit-optimize-contrast;
+}

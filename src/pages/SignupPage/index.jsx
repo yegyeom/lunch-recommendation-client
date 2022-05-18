@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from '../../api';
+import API from "../../api";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -35,9 +35,14 @@ const SignupPage = () => {
   };
 
   const handleComplete = async (e) => {
-    // navigate("/preference");
-    const data = await API.auth.signUp({user_id: username, nickname, password, password2: checkPassword});
-    console.log(data);
+    navigate("/preference");
+    const data = await API.auth.signUp({
+      user_id: username,
+      nickname,
+      password,
+      password2: checkPassword,
+    });
+    console.log("sign up");
   };
 
   return (
