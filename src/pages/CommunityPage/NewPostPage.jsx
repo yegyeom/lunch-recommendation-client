@@ -1,5 +1,6 @@
 import Category from "./Category";
 import { useState } from "react";
+import { getCategoryItems } from "../../utils/categoryItems.js";
 
 const NewPostPage = () => {
   const [category, setCategory] = useState("");
@@ -18,31 +19,29 @@ const NewPostPage = () => {
     setContent(e.target.value);
   };
 
-  const categoryItems = [
-    { index: 0, title: "질문", id: "question" },
-    { index: 1, title: "추천", id: "recommendation" },
-    { index: 2, title: "자유", id: "free" },
-  ];
+  const categoryItems = getCategoryItems();
 
   return (
     <div className="community">
       <Category
         getCategory={getCategory}
         categoryItems={categoryItems}
-        title={false}
+        postCategory={category}
+        postTitle={title}
+        postContent={content}
       ></Category>
       <form className="new-post">
         <input
           type="text"
           className="new-post-title"
           onChange={handleTitleChange}
-          placeholder="제목을 입력하세요."
+          placeholder="제목을 입력하세요. (2자 이상)"
         />
         <textarea
           type="text"
           className="new-post-content"
           onChange={handleContentChange}
-          placeholder="내용을 입력하세요."
+          placeholder="내용을 입력하세요. (5자 이상)"
         />
       </form>
     </div>

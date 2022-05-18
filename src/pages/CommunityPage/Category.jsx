@@ -1,11 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContextProvider";
+import API from "../../api";
 
 function Category(props) {
   const navigate = useNavigate();
   const [category, setCategory] = useState("");
-  const { isLogin } = useContext(AuthContext);
+  const { isLogin, user } = useContext(AuthContext);
+  const { postCategory, postTitle, postContent } = props;
 
   useEffect(() => {
     setCategory(props.categoryItems[0].title);
@@ -34,11 +36,19 @@ function Category(props) {
   };
 
   const handleNewPostBtnClick = () => {
-    navigate("/post");
+    navigate("/community/new");
   };
 
-  const handlePostBtnClick = () => {
-    navigate("/community");
+  const handlePostBtnClick = async () => {
+    if (postTitle.length < 2 || postContent.length < 5) return;
+    console.log(postTitle, postContent);
+    const data = await API.community.createPost({
+      category: 0,
+      title: postTitle,
+      content: postContent,
+    });
+    if (data) console.log(data);
+    navigate("/community/posts");
   };
 
   const categoryList = props.categoryItems.map((item, idx) => (
@@ -56,7 +66,7 @@ function Category(props) {
     <div className="community-list-header">
       <div>
         <h2 className="community-category">{categoryList}</h2>
-        {props.title ? (
+        {props.categoryItems.length === 4 ? (
           isLogin ? (
             <button className="new-post-btn" onClick={handleNewPostBtnClick}>
               글 작성

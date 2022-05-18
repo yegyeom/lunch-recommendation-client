@@ -30,7 +30,7 @@
   border-radius: 30px;
   color: white;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   padding: 0px 20px;
   cursor: pointer;
 }
@@ -113,4 +113,79 @@
 .new-post-content:focus {
   outline: none;
   padding: 20px 0px;
+}
+
+.view-post {
+  border: 1px solid #888888;
+  border-radius: 15px;
+  margin: 20px 10px 0px 10px;
+}
+
+.view-post-title {
+  display: flex;
+  margin: 0px auto;
+  width: 900px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #888888;
+  font-size: 20px;
+  padding: 15px 10px 10px 10px;
+  font-weight: bold;
+}
+
+.view-post-title:focus {
+  outline: none;
+}
+
+.view-post-title > span {
+  color: #888888;
+  font-size: 22px;
+}
+
+.view-post-content {
+  margin: 0px auto;
+  width: 900px;
+  height: 300px;
+  border: none;
+  padding: 20px 0px;
+  font-size: 20px;
+  resize: none;
+}
+
+.view-post-content:focus {
+  outline: none;
+  padding: 20px 0px;
+}
+
+.view-post-info {
+  color: #888888;
+  text-align: right;
+  font-weight: lighter;
+  padding-right: 20px;
+}
+
+.comment-list {
+  margin: 40px 30px 0px 30px;
+}
+
+.comment {
+  border-top: 1px solid #888888;
+  border-bottom: 1px solid #888888;
+  font-size: 20px;
+  padding: 15px 0px;
+}
+
+.comment-info {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #888888;
+}
+
+.comment-info > span {
+  color: black;
+  font-weight: bold;
+}
+
+.comment-content {
+  font-size: 16px;
 }
