@@ -44,7 +44,7 @@
 .post-list-item {
   display: flex;
   align-items: center;
-  width: 1000px;
+  width: 940px;
   height: 50px;
   vertical-align: middle;
   padding: 0px 30px;
@@ -63,6 +63,13 @@
   display: flex;
   flex-direction: column;
   margin-left: 22px;
+}
+
+.post-info > span > span {
+  font-weight: lighter;
+  font-size: 15px;
+  color: blue;
+  margin-left: 10px;
 }
 
 .post-detail-info {

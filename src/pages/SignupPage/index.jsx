@@ -34,15 +34,15 @@ const SignupPage = () => {
     else setWarningText(false);
   };
 
-  const handleComplete = async (e) => {
-    navigate("/preference");
+  const handleComplete = async () => {
     const data = await API.auth.signUp({
       user_id: username,
       nickname,
       password,
       password2: checkPassword,
     });
-    console.log("sign up");
+    console.log("sign up", data);
+    navigate("/preference");
   };
 
   return (

@@ -26,7 +26,7 @@ const Login = () => {
     else {
       setWarningText(false);
       await API.auth
-        .login({ username, password })
+        .login({ user_id: username, password })
         .then((res) => {
           console.log(res);
           setIsLogin(true);

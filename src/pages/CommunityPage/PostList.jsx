@@ -19,7 +19,6 @@ function PostList() {
       const data = await API.community.getPosts();
       if (data) {
         setPostItems(data);
-        console.log(data);
       }
     })();
   }, []);
@@ -27,11 +26,12 @@ function PostList() {
   const categoryItems = getAllCategoryItems();
 
   const handlePostClick = (info) => {
-    console.log(info);
-    navigate(`/community/posts/${info.index}`, { state: info });
+    navigate(`/community/posts/${info.post_id}`, {
+      state: [info.post_id, info.category_name],
+    });
   };
 
-  const EditDateList = postItems.map((item, idx) => {
+  const EditDateList = postItems.map((item) => {
     const arr1 = item.created_at.split("T");
     const arr2 = arr1[1].split(".");
 
@@ -47,7 +47,9 @@ function PostList() {
             <div className="post-info">
               <span onClick={() => handlePostClick(item)}>
                 {item.post_title}
+                <span>({item.comments_count})</span>
               </span>
+
               <div className="post-detail-info">
                 <span>{item.user_nickname}</span>
                 &nbsp;
