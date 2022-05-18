@@ -149,7 +149,6 @@
   border: none;
   padding: 20px 0px;
   font-size: 20px;
-  resize: none;
 }
 
 .view-post-content:focus {
@@ -188,4 +187,43 @@
 
 .comment-content {
   font-size: 16px;
+}
+
+.new-comment {
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid #c4c4c4;
+  margin: 40px 30px 0px 30px;
+  width: 920px;
+  height: 50px;
+  resize: none;
+  padding: 10px;
+  color: #888888;
+}
+
+.new-comment:focus {
+  outline: none;
+}
+
+.new-comment-active-btn {
+  background-color: #e8de8a;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0px 40px 880px;
+  cursor: pointer;
+}
+
+.new-comment-nonactive-btn {
+  background-color: #c4c4c4;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0px 40px 880px;
 }
