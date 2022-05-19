@@ -70,14 +70,10 @@ function Category(props) {
       <div>
         <h2 className="community-category">{categoryList}</h2>
         {props.categoryItems.length === 4 ? (
-          isLogin ? (
+          isLogin && (
             <button className="new-post-btn" onClick={handleNewPostBtnClick}>
               글 작성
             </button>
-          ) : (
-            <span className="confirm-text">
-              글 작성은 로그인 후 가능합니다!
-            </span>
           )
         ) : (
           <button className="new-post-btn" onClick={handlePostBtnClick}>
