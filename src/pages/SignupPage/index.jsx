@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../../api";
+import { AuthContext } from "../../contexts/AuthContextProvider";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const SignupPage = () => {
   const [passwordNotification, setPasswordNotification] = useState(false);
   const [checkPasswordNotification, setCheckPasswordNotification] =
     useState(false);
+  const { setIsLogin } = useContext(AuthContext);
 
   const handleIdChange = (e) => {
     const regExp = /^[0-9a-zA-Z_]{5,15}$/;
@@ -45,8 +47,16 @@ const SignupPage = () => {
       password,
       password2: checkPassword,
     });
-    console.log("sign up", data);
-    navigate("/preference");
+
+    console.log(data);
+
+    await API.auth
+      .login({ user_id: username, password })
+      .then(() => {
+        setIsLogin(true);
+        navigate("/preference");
+      })
+      .catch(() => console.log("login error"));
   };
 
   return (
