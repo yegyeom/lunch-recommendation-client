@@ -1,7 +1,14 @@
 import React from "react";
 import CancelIcon from "../assets/cancel.png";
 
-const Modal = ({ title, active, setActive, children, onClickAccept }) => {
+const Modal = ({
+  title,
+  active,
+  setActive,
+  children,
+  onClickAccept,
+  isLogin,
+}) => {
   if (!active) return <></>;
 
   return (
@@ -27,21 +34,29 @@ const Modal = ({ title, active, setActive, children, onClickAccept }) => {
         </header>
         {children}
         <footer className="modal-footer">
-          <button
-            className="modal-accept-button"
-            onClick={() => {
-              onClickAccept.call();
-              setActive(false);
-            }}
-          >
-            예
-          </button>
-          <button
-            className="modal-cancel-button"
-            onClick={() => setActive(false)}
-          >
-            아니오
-          </button>
+          {isLogin ? (
+            <>
+              <button
+                className="modal-accept-button"
+                onClick={() => {
+                  onClickAccept.call();
+                  setActive(false);
+                }}
+              >
+                예
+              </button>
+              <button
+                className="modal-cancel-button"
+                onClick={() => setActive(false)}
+              >
+                아니오
+              </button>
+            </>
+          ) : (
+            <div>
+              NYOM회원만 이용 가능한 기능입니다. 로그인 후 이용해보세요!
+            </div>
+          )}
         </footer>
       </div>
     </div>

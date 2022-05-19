@@ -39,13 +39,11 @@ const MenuPage = () => {
   const handleMenuClick = async (menu) => {
     setSelectedMenu(menu);
     setModalActive(true);
-    const data = await API.feature.getFoodInfo({ id: menu.food_id });
-    console.log(data);
+    await API.feature.getFoodInfo({ id: menu.food_id });
   };
 
   const onClickAccept = async () => {
-    console.log("accept", selectedMenu);
-    // const data = await API.
+    await API.auth.addLikeFood({ id: selectedMenu.food_id });
   };
 
   return (
@@ -63,6 +61,7 @@ const MenuPage = () => {
           active={modalActive}
           setActive={setModalActive}
           onClickAccept={onClickAccept}
+          isLogin={isLogin}
         >
           <div className="modal-content">
             <img
