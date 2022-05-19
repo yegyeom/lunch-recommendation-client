@@ -4,7 +4,7 @@ import API from "../../api";
 import { AuthContext } from "../../contexts/AuthContextProvider";
 
 const Login = () => {
-  const { setIsLogin } = useContext(AuthContext);
+  const { setIsLogin, setUser } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [warningText, setWarningText] = useState(false);
@@ -31,8 +31,7 @@ const Login = () => {
       setWarningText(false);
       await API.auth
         .login({ user_id: username, password })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           setIsLogin(true);
           navigate("/");
         })

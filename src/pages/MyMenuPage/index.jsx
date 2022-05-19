@@ -9,8 +9,8 @@ const MyMenuPage = () => {
   const [nickname, setNickname] = useState("");
 
   useEffect(() => {
-    !isLogin && navigate("/login");
-    isLogin && setNickname(user.profile.nickname);
+    if (!isLogin) navigate("/login");
+    else setNickname(user.profile.nickname);
   }, []);
 
   return (
