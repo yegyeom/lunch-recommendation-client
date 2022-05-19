@@ -164,10 +164,23 @@
 }
 
 .view-post-info {
-  color: #888888;
+  color: #606060;
   text-align: right;
   font-weight: lighter;
   padding-right: 20px;
+}
+
+.view-post-info > button {
+  font-weight: bold;
+  background-color: white;
+  color: #606060;
+  border: none;
+  cursor: pointer;
+}
+
+.view-post-info > button:hover {
+  text-decoration: underline 2px;
+  text-underline-position: under;
 }
 
 .comment-list {
@@ -182,14 +195,28 @@
 }
 
 .comment-info {
+  display: flex;
   font-size: 14px;
   margin-bottom: 10px;
   color: #888888;
+  justify-content: space-between;
 }
 
-.comment-info > span {
+.comment-info > div > span {
   color: black;
   font-weight: bold;
+}
+
+.comment-info button {
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-info button:hover {
+  text-decoration: underline 2px;
+  text-underline-position: under;
 }
 
 .comment-content {

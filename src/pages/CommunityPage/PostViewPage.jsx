@@ -1,16 +1,18 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../contexts/AuthContextProvider";
 import API from "../../api";
 
 const PostViewPage = () => {
-  const isLogin = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { isLogin, user } = useContext(AuthContext);
   const { state } = useLocation();
   const [postInfo, setPostInfo] = useState({});
   const [comments, setComments] = useState([]);
   const [editDate, setEditDate] = useState("");
   const [content, setContent] = useState("");
+  const [deleteComment, setDeleteComment] = useState(false);
 
   useEffect(() => {
     (async function () {
@@ -26,6 +28,14 @@ const PostViewPage = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    (async function () {
+      const data = await API.community.getPost({ id: state[0] });
+      if (data) setComments(data.comments);
+      setDeleteComment(false);
+    })();
+  }, [deleteComment]);
+
   const EditDateList = comments.map((item) => {
     const arr1 = item.created_at.split("T");
     const arr2 = arr1[1].split(".");
@@ -33,15 +43,23 @@ const PostViewPage = () => {
     return arr1[0] + " " + arr2[0];
   });
 
-  const commentList = comments.map((item, idx) => (
-    <div className="comment" key={idx}>
-      <div className="comment-info">
-        <span>{item.nickname}</span>&nbsp;
-        {EditDateList[idx]}
-      </div>
-      <div className="comment-content">{item.content}</div>
-    </div>
-  ));
+  const handleModifyBtnClick = () => {
+    console.log("modify");
+  };
+
+  const handleDeleteBtnClick = async (value, id) => {
+    const data =
+      value === "post"
+        ? await API.community.deletePost({
+            id,
+          })
+        : await API.community.deleteComment({
+            id,
+          });
+
+    if (data) console.log(data);
+    value === "post" ? navigate("/community/posts") : setDeleteComment(true);
+  };
 
   const handleCommentChange = (e) => {
     setContent(e.target.value);
@@ -61,6 +79,34 @@ const PostViewPage = () => {
     }
   };
 
+  const commentList = comments.map((item, idx) => (
+    <div className="comment" key={idx}>
+      <div className="comment-info">
+        <div>
+          <span>{item.nickname}</span>&nbsp;
+          {EditDateList[idx]}
+        </div>
+        <div>
+          {user.pk === postInfo.user_id && (
+            <>
+              <button
+                onClick={() => handleModifyBtnClick("comment", item.comment_id)}
+              >
+                수정
+              </button>
+              <button
+                onClick={() => handleDeleteBtnClick("comment", item.comment_id)}
+              >
+                삭제
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="comment-content">{item.content}</div>
+    </div>
+  ));
+
   return (
     <div className="community">
       <div className="view-post">
@@ -72,9 +118,19 @@ const PostViewPage = () => {
       </div>
       <div className="view-post-info">
         {postInfo.nickname}&nbsp;&nbsp;{editDate}
+        {user.pk === postInfo.user_id && (
+          <>
+            <button onClick={() => handleModifyBtnClick("post", state[0])}>
+              수정
+            </button>
+            <button onClick={() => handleDeleteBtnClick("post", state[0])}>
+              삭제
+            </button>
+          </>
+        )}
       </div>
       <div className="comment-list">{commentList}</div>
-      {isLogin.isLogin && (
+      {isLogin && (
         <>
           <textarea
             type="text"
