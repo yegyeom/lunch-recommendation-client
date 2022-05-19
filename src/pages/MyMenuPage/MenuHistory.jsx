@@ -1,6 +1,6 @@
 import React from "react";
 import tmp from "../../assets/temp.jpeg";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Modal from "../../components/Modal";
 
 const MenuHistory = () => {
@@ -8,10 +8,10 @@ const MenuHistory = () => {
   const [modalActive, setModalActive] = useState(false);
 
   const handleMenuClick = (menu) => {
-    console.log(menu)
+    console.log(menu);
     setSelectedMenu(menu);
     setModalActive(true);
-  }
+  };
 
   const historyItems = [
     {
@@ -38,12 +38,15 @@ const MenuHistory = () => {
   ];
 
   const historyList = historyItems.map((item, idx) => (
-    <>
-      <div className="history-item" key={idx}>
+    <Fragment key={idx}>
+      <div className="history-item">
         <img className="history-img" alt="menu_img" src={item.src} />
         <div>
           {item.year}년 {item.month}월 {item.day}일에 드신&nbsp;
-          <span onClick={() => handleMenuClick(item)} value="testValue">{item.title}</span>&nbsp;어때요?
+          <span onClick={() => handleMenuClick(item)} value="testValue">
+            {item.title}
+          </span>
+          &nbsp;어때요?
         </div>
       </div>
       {selectedMenu && (
@@ -65,7 +68,7 @@ const MenuHistory = () => {
           </div>
         </Modal>
       )}
-    </>
+    </Fragment>
   ));
 
   return <div className="my-history-container">{historyList}</div>;

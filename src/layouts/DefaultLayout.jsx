@@ -33,6 +33,7 @@ function DefaultLayout({ children }) {
     setIsLogin(false);
     setUser(null);
     deleteAuthorizationHeader();
+    navigate("/");
   };
 
   useEffect(() => {

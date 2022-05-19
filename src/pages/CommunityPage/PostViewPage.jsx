@@ -83,7 +83,7 @@ const PostViewPage = () => {
     <div className="comment" key={idx}>
       <div className="comment-info">
         <div>
-          <span>{item.nickname}</span>&nbsp;
+          <span>{item.nickname}</span>&nbsp;&nbsp;&nbsp;
           {EditDateList[idx]}
         </div>
         <div>
@@ -111,13 +111,13 @@ const PostViewPage = () => {
     <div className="community">
       <div className="view-post">
         <div className="view-post-title">
-          <span>[{state[1]}]</span>&nbsp;
+          <span>[{state[1]}]</span>&nbsp;&nbsp;
           {postInfo.title}
         </div>
         <div className="view-post-content">{postInfo.content}</div>
       </div>
       <div className="view-post-info">
-        {postInfo.nickname}&nbsp;&nbsp;{editDate}
+        {postInfo.nickname}&nbsp;&nbsp;&nbsp;{editDate}
         {user.pk === postInfo.user_id && (
           <>
             <button onClick={() => handleModifyBtnClick("post", state[0])}>
