@@ -8,15 +8,16 @@ const SignupPage = () => {
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  const [warningText, setWarningText] = useState(false);
-  const [idNotification, setIdNotification] = useState("");
   const [usernameNotification, setUsernameNotification] = useState(false);
+  const [passwordNotification, setPasswordNotification] = useState(false);
+  const [checkPasswordNotification, setCheckPasswordNotification] =
+    useState(false);
 
   const handleIdChange = (e) => {
-    setUsername(e.target.value);
     const regExp = /^[0-9a-zA-Z_]{5,15}$/;
     if (regExp.test(e.target.value)) setUsernameNotification(true);
     else setUsernameNotification(false);
+    setUsername(e.target.value);
   };
 
   const handleNicknameChange = (e) => {
@@ -24,14 +25,17 @@ const SignupPage = () => {
   };
 
   const handlePasswordChange = (e) => {
+    const regExp = /^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+    if (regExp.test(e.target.value)) setPasswordNotification(true);
+    else setPasswordNotification(false);
     setPassword(e.target.value);
   };
 
   const handleCheckPasswordChange = (e) => {
     setCheckPassword(e.target.value);
     if (password !== e.target.value && e.target.value.length > 0)
-      setWarningText("비밀번호가 일치하지 않습니다.");
-    else setWarningText(false);
+      setCheckPasswordNotification(false);
+    else setCheckPasswordNotification(true);
   };
 
   const handleComplete = async () => {
@@ -57,9 +61,7 @@ const SignupPage = () => {
             username="username"
             placeholder="영문자, 숫자, 특수문자(_) 사용 가능합니다. (5자 이상, 15자 이하)"
           />
-          {idNotification.length > 0 ? (
-            <span className="warning-text">이미 존재하는 아이디입니다.</span>
-          ) : !usernameNotification && username.length > 0 ? (
+          {!usernameNotification && username.length > 0 ? (
             <span className="warning-text">
               영문자, 숫자, 특수문자(_) 사용 가능합니다. (5자 이상, 15자 이하)
             </span>
@@ -84,20 +86,31 @@ const SignupPage = () => {
           <input
             onChange={handlePasswordChange}
             type="password"
-            placeholder="비밀번호"
+            placeholder="영문자, 숫자, 특수문자를 모두 포함해야 합니다. (8자 이상)"
           />
-          <span className="empty-text" />
+          {!passwordNotification && password.length > 0 ? (
+            <span className="warning-text">
+              영문자, 숫자, 특수문자를 모두 포함해야 합니다. (8자 이상)
+            </span>
+          ) : passwordNotification && password.length > 0 ? (
+            <span className="confirm-text">사용 가능한 비밀번호입니다.</span>
+          ) : (
+            <span className="empty-text" />
+          )}
         </>
         <>
           <span>비밀번호 확인</span>
           <input
             onChange={handleCheckPasswordChange}
             type="password"
-            placeholder="비밀번호"
+            placeholder="영문자, 숫자, 특수문자를 모두 포함해야 합니다. (8자 이상)"
           />
-          {warningText ? (
-            <span className="warning-text">{warningText}</span>
-          ) : password.length > 0 && password === checkPassword ? (
+          {!checkPasswordNotification && checkPassword.length > 0 ? (
+            <span className="warning-text">비밀번호가 일치하지 않습니다.</span>
+          ) : checkPasswordNotification &&
+            passwordNotification &&
+            checkPassword.length > 0 &&
+            password === checkPassword ? (
             <span className="confirm-text">비밀번호가 일치합니다.</span>
           ) : (
             <span className="empty-text" />
@@ -108,18 +121,20 @@ const SignupPage = () => {
         <button
           className={
             username.length > 0 &&
+            usernameNotification &&
             nickname.length > 0 &&
             password.length > 0 &&
-            checkPassword.length &&
+            passwordNotification &&
             password === checkPassword
               ? "on"
               : "off"
           }
           onClick={
             username.length > 0 &&
+            usernameNotification &&
             nickname.length > 0 &&
             password.length > 0 &&
-            checkPassword.length &&
+            passwordNotification &&
             password === checkPassword
               ? handleComplete
               : null
