@@ -18,7 +18,11 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLoginClick = async (e) => {
+  const handleEnter = (e) => {
+    if (e.key === "Enter") handleLoginClick();
+  };
+
+  const handleLoginClick = async () => {
     if (username.length <= 0 && password.length <= 0)
       setWarningText("아이디와 비밀번호를 모두 입력하세요.");
     else if (password.length === 0) setWarningText("비밀번호를 입력하세요.");
@@ -55,7 +59,7 @@ const Login = () => {
           <br />
           NYOM의 모든 서비스를 이용할 수 있습니다.
         </div>
-        <div className="login-box">
+        <div className="login-box" onKeyDown={handleEnter}>
           <div>
             <input onChange={handleIdChange} type="text" placeholder="아이디" />
             <input
