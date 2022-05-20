@@ -13,6 +13,7 @@ const MenuPage = () => {
   const { isLogin, user } = useContext(AuthContext);
   const [mainData, setMainData] = useState([]);
   const [foodInfo, setFoodInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async function () {
@@ -21,21 +22,25 @@ const MenuPage = () => {
 
       const popular = await API.recommendation.getPopularMenu();
       setPopularData(popular);
+      setIsLoading(false);
     })();
   }, []);
 
   useEffect(() => {
+    if (isLoading) return;
     (async function () {
       if (isLogin && user.profile.likes.length === 0) {
         const popularInterest =
           await API.recommendation.getPopularInterestMenu();
+        console.log("1", popularInterest);
         setMainData([...mainData, popularInterest.slice(0, 5)]);
       } else if (isLogin && user.profile.likes.length > 0) {
         const userInterest = await API.recommendation.getUserInterestMenu();
         setMainData([...mainData, userInterest.slice(0, 5)]);
+        console.log("2", userInterest);
       }
     })();
-  }, [user]);
+  }, [user, isLoading]);
 
   const handleMenuClick = async (menu) => {
     setSelectedMenu(menu);
@@ -45,6 +50,7 @@ const MenuPage = () => {
   };
 
   const onClickAccept = async () => {
+    // await API.auth.addLikeFood({ id: selectedMenu.food_id });
     await API.auth.addHistory({ food_id: selectedMenu.food_id });
   };
 

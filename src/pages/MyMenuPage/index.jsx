@@ -15,8 +15,8 @@ const MyMenuPage = () => {
     else {
       setNickname(user.profile.nickname);
       (async function () {
-        const data = await API.auth.getHistory();
-        console.log(data);
+        const data = await API.auth.getHistory({ id: user.pk });
+        console.log("mymenu", data);
         setUserHistory(data);
       })();
     }
