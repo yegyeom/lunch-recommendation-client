@@ -12,6 +12,12 @@ const auth = {
     },
     user: async () => {
         return await doFetch('GET', '/account/user')
+    },
+    addLikeFood: async (params) => {
+        return await doFetch('PUT', `/account/user/likes/${params.id}`)
+    },
+    getLikeFood: async (params) => {
+        return await doFetch('GET', `/account/users/${params.id}/likes`)
     }
 }
 
