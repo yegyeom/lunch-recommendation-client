@@ -13,20 +13,20 @@ const PreferencePage = () => {
   const navigate = useNavigate();
 
   const items1 = [
-    { index: 1, title: "고기/구이", src: food_1, color: "#E9B27F" },
-    { index: 2, title: "밥/백반/죽/국수", src: food_2, color: "#EDD1B7" },
-    { index: 3, title: "분식/튀김", src: food_3, color: "#D9A859" },
+    { index: 1, title: "국/찜/탕/찌개", src: food_6, color: "#C9DD6D" },
+    { index: 2, title: "양식/패스트푸드", src: food_8, color: "#B2CDE0" },
+    { index: 3, title: "일식/돈까스", src: food_5, color: "#C2B5D8" },
   ];
 
   const items2 = [
     { index: 4, title: "중식/아시안", src: food_4, color: "#EFDA8C" },
-    { index: 5, title: "일식/돈까스", src: food_5, color: "#C2B5D8" },
-    { index: 6, title: "국/찜/탕/찌개", src: food_6, color: "#C9DD6D" },
+    { index: 5, title: "밥/백반/죽/국수", src: food_2, color: "#EDD1B7" },
+    { index: 6, title: "치킨", src: food_7, color: "#D4D2CA" },
   ];
 
   const items3 = [
-    { index: 7, title: "치킨", src: food_7, color: "#D4D2CA" },
-    { index: 8, title: "양식/패스트푸드", src: food_8, color: "#B2CDE0" },
+    { index: 7, title: "고기/구이", src: food_1, color: "#E9B27F" },
+    { index: 8, title: "분식/튀김", src: food_3, color: "#D9A859" },
   ];
 
   const handleItemClick = async (index) => {
