@@ -6,11 +6,18 @@
   --swiper-theme-color: #e6c230;
 }
 
-.swiper-horizontal > .swiper-pagination-bullets,
+.menu-swiper > .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
   left: 0px;
   top: 260px;
   width: 100%;
+}
+
+.guide-swipier > .swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+  top: 530px;
 }

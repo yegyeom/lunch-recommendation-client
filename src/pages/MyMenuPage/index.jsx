@@ -2,15 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import MenuHistory from "./MenuHistory";
 import { AuthContext } from "../../contexts/AuthContextProvider";
 import { useNavigate } from "react-router-dom";
+import API from "../../api";
 
 const MyMenuPage = () => {
   const { isLogin, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [nickname, setNickname] = useState("");
+  const [userHistory, setUserHistory] = useState([]);
 
   useEffect(() => {
     if (!isLogin) navigate("/login");
-    else setNickname(user.profile.nickname);
+    else {
+      setNickname(user.profile.nickname);
+      (async function () {
+        const data = await API.auth.getLikeFood({ id: user.pk });
+        console.log(data);
+        setUserHistory(data);
+      })();
+    }
   }, []);
 
   return (
@@ -23,7 +32,7 @@ const MyMenuPage = () => {
           </h2>
           <h2>선택하셨던 메뉴에요!</h2>
         </div>
-        <MenuHistory />
+        <MenuHistory userHistory={userHistory} />
       </div>
     </>
   );

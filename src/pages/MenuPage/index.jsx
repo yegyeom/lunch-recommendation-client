@@ -12,6 +12,7 @@ const MenuPage = () => {
   const [popularData, setPopularData] = useState([]);
   const { isLogin, user } = useContext(AuthContext);
   const [mainData, setMainData] = useState([]);
+  const [foodInfo, setFoodInfo] = useState({});
 
   useEffect(() => {
     (async function () {
@@ -39,7 +40,8 @@ const MenuPage = () => {
   const handleMenuClick = async (menu) => {
     setSelectedMenu(menu);
     setModalActive(true);
-    await API.feature.getFoodInfo({ id: menu.food_id });
+    const data = await API.feature.getFoodInfo({ id: menu.food_id });
+    setFoodInfo(data);
   };
 
   const onClickAccept = async () => {

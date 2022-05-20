@@ -1,4 +1,4 @@
-.my-menu-container{
+.my-menu-container {
   display: flex;
   width: 1400px;
   margin: 0px auto;
@@ -15,15 +15,15 @@
   margin-top: 10px;
 }
 
-.user-text-container > h2:first-child{
+.user-text-container > h2:first-child {
   margin-bottom: 10px;
 }
 
-.user-text-container > h2:last-child{
+.user-text-container > h2:last-child {
   margin-top: 0px;
 }
 
-.user-nickname{
+.user-nickname {
   text-decoration: underline 2px;
   text-underline-position: under;
 }
@@ -66,6 +66,8 @@
 }
 
 .history-img {
+  image-rendering: -webkit-optimize-contrast;
   width: 600px;
   height: 400px;
+  object-fit: cover;
 }

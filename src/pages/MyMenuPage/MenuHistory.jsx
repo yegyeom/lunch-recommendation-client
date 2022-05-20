@@ -1,68 +1,59 @@
-import React from "react";
+import React, { useContext } from "react";
 import tmp from "../../assets/temp.jpeg";
 import { Fragment, useState } from "react";
 import Modal from "../../components/Modal";
+import API from "../../api";
+import { AuthContext } from "../../contexts/AuthContextProvider";
 
-const MenuHistory = () => {
+const MenuHistory = ({ userHistory }) => {
   const [selectedMenu, setSelectedMenu] = useState();
   const [modalActive, setModalActive] = useState(false);
+  const { isLogin } = useContext(AuthContext);
 
   const handleMenuClick = (menu) => {
-    console.log(menu);
     setSelectedMenu(menu);
     setModalActive(true);
   };
 
-  const historyItems = [
-    {
-      title: "파스타",
-      year: 2022,
-      month: 5,
-      day: 15,
-      src: tmp,
-    },
-    {
-      title: "고추장찜닭",
-      year: 2022,
-      month: 5,
-      day: 15,
-      src: tmp,
-    },
-    {
-      title: "아이스아메리카노샷추가",
-      year: 2022,
-      month: 5,
-      day: 15,
-      src: tmp,
-    },
-  ];
+  const onClickAccept = async () => {
+    await API.auth.addLikeFood({ id: selectedMenu.food_id });
+  };
 
-  const historyList = historyItems.map((item, idx) => (
+  const EditDateList = userHistory.map((item) => {
+    const arr1 = item.created_at.split("T");
+    const arr2 = arr1[0].split("-");
+
+    return arr2[0] + "년 " + arr2[1] + "월 " + arr2[2] + "일";
+  });
+
+  const historyList = userHistory.map((item, idx) => (
     <Fragment key={idx}>
       <div className="history-item">
-        <img className="history-img" alt="menu_img" src={item.src} />
+        <img className="history-img" alt="menu_img" src={item.image} />
         <div>
-          {item.year}년 {item.month}월 {item.day}일에 드신&nbsp;
+          {EditDateList[idx]}에 드신 &nbsp;
           <span onClick={() => handleMenuClick(item)} value="testValue">
-            {item.title}
+            {item.food_name}
           </span>
           &nbsp;어때요?
         </div>
       </div>
       {selectedMenu && (
         <Modal
-          title={selectedMenu.title}
+          title={selectedMenu.food_name}
           active={modalActive}
           setActive={setModalActive}
+          onClickAccept={onClickAccept}
+          isLogin={isLogin}
         >
           <div className="modal-content">
             <img
               className="modal-image"
-              src={selectedMenu.src}
+              src={selectedMenu.image}
               alt="음식 이미지"
             ></img>
             <p>
-              <span className="menu-name">{selectedMenu.title}</span>
+              <span className="menu-name">{selectedMenu.food_name}</span>
               <span>을(를) 오늘의 메뉴로 선정하시겠습니까?</span>
             </p>
           </div>
