@@ -43,21 +43,15 @@ const PostViewPage = () => {
     return arr1[0] + " " + arr2[0];
   });
 
-  const handleModifyBtnClick = () => {
-    console.log("modify");
-  };
-
   const handleDeleteBtnClick = async (value, id) => {
-    const data =
-      value === "post"
-        ? await API.community.deletePost({
-            id,
-          })
-        : await API.community.deleteComment({
-            id,
-          });
+    value === "post"
+      ? await API.community.deletePost({
+          id,
+        })
+      : await API.community.deleteComment({
+          id,
+        });
 
-    if (data) console.log(data);
     value === "post" ? navigate("/community/posts") : setDeleteComment(true);
   };
 
@@ -90,11 +84,6 @@ const PostViewPage = () => {
           {user.pk === postInfo.user_id && (
             <>
               <button
-                onClick={() => handleModifyBtnClick("comment", item.comment_id)}
-              >
-                수정
-              </button>
-              <button
                 onClick={() => handleDeleteBtnClick("comment", item.comment_id)}
               >
                 삭제
@@ -120,9 +109,6 @@ const PostViewPage = () => {
         {postInfo.nickname}&nbsp;&nbsp;&nbsp;{editDate}
         {user.pk === postInfo.user_id && (
           <>
-            <button onClick={() => handleModifyBtnClick("post", state[0])}>
-              수정
-            </button>
             <button onClick={() => handleDeleteBtnClick("post", state[0])}>
               삭제
             </button>

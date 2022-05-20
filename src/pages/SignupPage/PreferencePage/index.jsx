@@ -35,7 +35,7 @@ const PreferencePage = () => {
       .then(() => {
         navigate("/");
       })
-      .catch(() => console.log("interest error"));
+      .catch(() => console.errors("interest error"));
   };
 
   const list1 = items1.map((item, idx) => (

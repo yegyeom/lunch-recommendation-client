@@ -5,7 +5,6 @@ const auth = {
         return await doFetch('POST', '/account/users', { params })
     },
     interest: async (params) => {
-        console.log(params)
         return await doFetch('POST', '/account/user/interest', { params })
     },
     login: async (params) => {

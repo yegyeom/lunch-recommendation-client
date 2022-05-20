@@ -41,7 +41,7 @@ function Category(props) {
 
   const handlePostBtnClick = async () => {
     if (postTitle.length < 2 || postContent.length < 5) return;
-    console.log(postTitle, postContent);
+
     const selectedCategory =
       postCategory === "질문" ? 1 : postCategory === "추천" ? 2 : 3;
 
@@ -50,7 +50,6 @@ function Category(props) {
       title: postTitle,
       content: postContent,
     });
-    if (data) console.log(data);
     navigate("/community/posts");
   };
 

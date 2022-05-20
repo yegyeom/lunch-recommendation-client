@@ -48,15 +48,13 @@ const SignupPage = () => {
       password2: checkPassword,
     });
 
-    console.log(data);
-
     await API.auth
       .login({ user_id: username, password })
       .then(() => {
         setIsLogin(true);
         navigate("/preference");
       })
-      .catch(() => console.log("login error"));
+      .catch(() => console.error("login error"));
   };
 
   return (

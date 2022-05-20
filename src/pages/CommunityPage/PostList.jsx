@@ -52,7 +52,7 @@ function PostList() {
 
               <div className="post-detail-info">
                 <span>{item.user_nickname}</span>
-                &nbsp;
+                &nbsp;&nbsp;&nbsp;
                 <span>{EditDateList[idx]}</span>
               </div>
             </div>
