@@ -221,6 +221,7 @@ nav * {
   padding: 20px 0px;
   font-size: 20px;
   resize: none;
+  white-space: pre;
 }
 
 .new-post-content:focus {
@@ -262,6 +263,7 @@ nav * {
   border: none;
   padding: 20px 0px;
   font-size: 20px;
+  white-space: pre;
 }
 
 .view-post-content:focus {

@@ -16,7 +16,6 @@ const MyMenuPage = () => {
       setNickname(user.profile.nickname);
       (async function () {
         const data = await API.auth.getLikeFood({ id: user.pk });
-        console.log(data);
         setUserHistory(data);
       })();
     }
