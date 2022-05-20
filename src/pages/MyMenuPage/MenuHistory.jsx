@@ -16,7 +16,7 @@ const MenuHistory = ({ userHistory }) => {
   };
 
   const onClickAccept = async () => {
-    await API.auth.addLikeFood({ id: selectedMenu.food_id });
+    await API.auth.addHistory({ food_id: selectedMenu.food_id });
   };
 
   const EditDateList = userHistory.map((item) => {

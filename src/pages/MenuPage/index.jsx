@@ -45,7 +45,7 @@ const MenuPage = () => {
   };
 
   const onClickAccept = async () => {
-    await API.auth.addLikeFood({ id: selectedMenu.food_id });
+    await API.auth.addHistory({ food_id: selectedMenu.food_id });
   };
 
   return (

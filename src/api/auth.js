@@ -18,6 +18,12 @@ const auth = {
     },
     getLikeFood: async (params) => {
         return await doFetch('GET', `/account/users/${params.id}/likes`)
+    },
+    addHistory: async (params) => {
+        return await doFetch('POST', '/account/user/histories', { params})
+    },
+    getHistory: async () => {
+        return await doFetch('GET', '/account/user/histories')
     }
 }
 
