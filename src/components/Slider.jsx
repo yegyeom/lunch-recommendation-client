@@ -10,7 +10,7 @@ const Slider = ({ items, onClickSlide }) => {
   const slides = items.map((item) => (
     <SwiperSlide key={item.food_id} onClick={() => onClickSlide(item)}>
       <div className="slide">
-        <img className="slide-image" src={item.src} alt="음식 이미지"></img>
+        <img className="slide-image" src={item.image} alt="음식 이미지"></img>
         <span>{item.food_name}</span>
       </div>
     </SwiperSlide>

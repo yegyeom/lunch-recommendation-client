@@ -66,8 +66,7 @@ const MenuPage = () => {
           <div className="modal-content">
             <img
               className="modal-image"
-              // src={"../../assets/temp.jpeg"}
-              src={selectedMenu.image}
+              src={foodInfo.image}
               alt="음식 이미지"
             ></img>
             <p>
